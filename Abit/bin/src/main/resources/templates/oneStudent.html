@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+<nav class="site-header sticky-top py-1">
+  <div class="container d-flex flex-column flex-md-row justify-content-between">
+
+    <a class="py-2 d-none d-md-inline-block" href="/students/main">Main</a>
+    <a class="py-2 d-none d-md-inline-block" href="/students/all">All students</a>
+    <a class="py-2 d-none d-md-inline-block" href="/students/about">About us</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">Exit</a>
+
+  </div>
+</nav>
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+  <div class="col-md-5 p-lg-5 mx-auto my-5">
+    <div style="margin: 100px auto auto auto; width:100%; height:100%; background-color:#55595c">
+
+
+      <h3
+              style="margin: -190px auto auto auto; text-align: center">Person:
+        <p th:text="${student.surname}"/></p>
+      </h3>
+      <div style="width: 30%; margin: 0px 0 0 40%"
+           class="btn-group">
+        <br/>
+
+        <form action="#" th:action="@{/students/customerOne/{id}(id=${student.getId()})}"
+              th:object="${student}" method="post">
+          <h3>ID: <span th:text="${student.id}"></span></h3>
+
+          <h3>Full Name: <span th:text="${student.name}"></span></h3>
+
+          <h3>Full Name: <span th:text="${student.surname}"></span></h3>
+
+          <h3>Full Name: <span th:text="${student.age}"></span></h3>
+
+          <h3>Email: <span th:text="${student.email}"></span></h3>
+
+
+          <input type="submit" value="Back to all students">
+        </form>
+      </div>
+      </rect>
+      </svg>
+    </div>
+  </div>
+  <div class="product-device box-shadow d-none d-md-block"></div>
+  <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+</div>
+
+</body>
+</html>
