@@ -3,6 +3,8 @@ package com.abit.Abit.controller;
 import com.abit.Abit.entety.Abit;
 import com.abit.Abit.service.AbitService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -10,19 +12,27 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.File;
 
-@org.springframework.stereotype.Controller
+@org.springframework.stereotype.Controller("/book")
 @RequestMapping("/students")
 public class Controller {
 
     @Autowired
     private AbitService abitServ;
 
+    @GetMapping("/")
+    public String login(Model model) {
+        return "login";
+    }
 
     @GetMapping("/main")
     public String main(Model model) {
         return "main";
     }
+
+
+
 
     @GetMapping("/about")
     public String about(Model model) {
@@ -85,7 +95,7 @@ public class Controller {
     }
 
     @PostMapping("/{id}/edit")
-    public String update(@ModelAttribute("student") @Valid Abit student,  BindingResult bR, @PathVariable("id") Long id) {
+    public String update(@ModelAttribute("student") @Valid Abit student, BindingResult bR, @PathVariable("id") Long id) {
 
         if (bR.hasErrors()) {
             return "studentUpdate";
@@ -108,6 +118,7 @@ public class Controller {
 
         return "main";
     }
+
     @PostMapping("/upload")
     public String submit(
             @RequestParam MultipartFile file, @RequestParam String name,

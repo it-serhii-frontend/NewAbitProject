@@ -1,11 +1,13 @@
 package com.abit.Abit.entety;
 
 import org.hibernate.validator.constraints.Range;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.io.File;
 import java.util.Set;
 
 @Entity(name = "abit")
@@ -65,16 +67,6 @@ public class Abit {
     @Range(min = 1, max = 5, message = "Between 1 and 5")
     private int mark3;
 
-    @Column(nullable = true, length = 64)
-    private String photos;
-
-    public String getPhotos() {
-        return photos;
-    }
-
-    public void setPhotos(String photos) {
-        this.photos = photos;
-    }
 
     private String averageMark;
 
