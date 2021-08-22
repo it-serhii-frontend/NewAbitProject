@@ -2,11 +2,14 @@ package com.abit.Abit.service;
 
 import com.abit.Abit.entety.Abit;
 import com.abit.Abit.repo.AbitRepo;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class AbitService {
+
 
     @Autowired
     private AbitRepo abitRepo;

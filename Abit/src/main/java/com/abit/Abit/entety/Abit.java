@@ -1,11 +1,13 @@
 package com.abit.Abit.entety;
 
 import org.hibernate.validator.constraints.Range;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.io.File;
 import java.util.Set;
 
 @Entity(name = "abit")
@@ -15,6 +17,14 @@ public class Abit {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     @Column(name = "name")
     @NotEmpty(message = "Between 2 and 50 chars")
@@ -65,16 +75,9 @@ public class Abit {
     @Range(min = 1, max = 5, message = "Between 1 and 5")
     private int mark3;
 
-    @Column(nullable = true, length = 64)
-    private String photos;
-
-    public String getPhotos() {
-        return photos;
-    }
-
-    public void setPhotos(String photos) {
-        this.photos = photos;
-    }
+    @Lob
+    @Column(name = "photo", columnDefinition="BLOB")
+    private byte[] photo;
 
     private String averageMark;
 
@@ -119,13 +122,7 @@ public class Abit {
         this.mark3 = mark3;
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

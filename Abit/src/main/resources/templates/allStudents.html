@@ -10,6 +10,7 @@
 
 </head>
 <body>
+<h1 th:text = "#{welcome.text}"></h1>
 <nav class="site-header sticky-top py-1">
   <div class="container d-flex flex-column flex-md-row justify-content-between">
 
@@ -33,6 +34,7 @@
           <th>Email</th>
           <th>Result</th>
 
+
         </tr>
         </thead>
         <tbody>
@@ -46,6 +48,7 @@
           <td th:text="${el.email}"></td>
           <b> <td th:text="${el.averageMark}"></td></b>
 
+
           <td><a class="btn"
                  th:href="@{studentOne/{id}(id =${el.id})}">Read more</a></td>
           <td><a class="btn"
@@ -56,6 +59,7 @@
         </tbody>
 
       </table>
+
     </div>
 
 
